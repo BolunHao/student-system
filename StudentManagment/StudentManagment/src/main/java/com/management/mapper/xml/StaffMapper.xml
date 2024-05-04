@@ -1,0 +1,35 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<?import java.lang.*?>-->
+<!--<?import java.util.*?>-->
+<!--<?import javafx.scene.*?>-->
+<!--<?import javafx.scene.control.*?>-->
+<!--<?import javafx.scene.layout.*?>-->
+
+<!--<AnchorPane xmlns="http://javafx.com/javafx"-->
+<!--            xmlns:fx="http://javafx.com/fxml"-->
+<!--            fx:controller="com.management.mapper.xml.Module"-->
+<!--            prefHeight="400.0" prefWidth="600.0">-->
+<!--</AnchorPane>-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.management.mapper.Mapper.ModuleMapper">
+    <select id="selectHomeworkAndExam" resultType="com.management.Parametric.Module">
+        select m.* from module m
+        left join student_module sm on sm.module_id = sm.module_id
+        where sm.module_id = #{studentId}
+        <if test="assessmentType != null and  assessmentType != '' ">
+            and m.assessment_type = #{assessmentType}
+        </if>
+    </select>
+
+    <select id="selectScoreByStudentId" resultType="com.management.vo.ModuleVO">
+        select m.*, s.student_name as studentName,s2.staff_name as staffName from module m
+        left join student_module sm on sm.module_id = sm.module_id
+        left join student s on s.student_id = sm.student_id
+        left join staff_module sm2 on sm2.module_id = sm.module_id
+        left join staff s2 on s2.staff_id = sm2.staff_id
+        where sm.student_id = #{studentId}
+    </select>
+
+
+</mapper>

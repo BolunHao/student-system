@@ -1,0 +1,27 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<?import java.lang.*?>-->
+<!--<?import java.util.*?>-->
+<!--<?import javafx.scene.*?>-->
+<!--<?import javafx.scene.control.*?>-->
+<!--<?import javafx.scene.layout.*?>-->
+
+<!--<AnchorPane xmlns="http://javafx.com/javafx"-->
+<!--            xmlns:fx="http://javafx.com/fxml"-->
+<!--            fx:controller="com.management.mapper.xml.Meeting"-->
+<!--            prefHeight="400.0" prefWidth="600.0">-->
+
+<!--</AnchorPane>-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.management.mapper.Mapper.MeetingMapper">
+    <select id="selectCourseByTeacher" resultType="com.management.vo.ModuleVO">
+        select m.*, st.staff_name as staffName from module m
+        left join staff_module s on m.module_id = s.module_id
+        left join staff st on st.staff_id = s.staff_id
+        where s.studentId = #{studentId}
+        <if test="assessmentType != null and  assessmentType != '' ">
+            and m.assessmentType = #{assessmentType}
+        </if>
+
+    </select>
+</mapper>
