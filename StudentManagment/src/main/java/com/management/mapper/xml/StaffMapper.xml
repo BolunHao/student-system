@@ -1,0 +1,43 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<?import java.lang.*?>-->
+<!--<?import java.util.*?>-->
+<!--<?import javafx.scene.*?>-->
+<!--<?import javafx.scene.control.*?>-->
+<!--<?import javafx.scene.layout.*?>-->
+
+<!--<AnchorPane xmlns="http://javafx.com/javafx"-->
+<!--            xmlns:fx="http://javafx.com/fxml"-->
+<!--            fx:controller="com.management.mapper.xml.Module"-->
+<!--            prefHeight="400.0" prefWidth="600.0">-->
+<!--</AnchorPane>-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.management.mapper.Mapper.StaffMapper">
+
+    <select id="selectApplyByStaffId" resultType="com.management.vo.ApprovalVO">
+        <!-- Apply for a course -->
+        select st.id as id, s.student_name as studentName, '课程申请' as approvalContent, st.student_module_status as
+        approvalStatus
+        from module m;
+        left join student_module st on st.module_id = m.module_id
+        left join student s = s.student_id = st.student_id
+        left join staff_module sm on sm.module_id = m.module_id
+        where sm.staff_id = #{staffId}
+        union all
+        <!-- Academic guidance application -->
+        select ag.id as id, s.student_name as studentName, '学术指导申请' as approvalContent, ag.tutor_status as
+        approvalStatus
+        from academic_guidence ag;
+        left join student s = s.student_id = ag.student_id
+        where ag.staff_id = #{staffId}
+        union all
+        <!-- Meeting Instance Requester -->
+        select ag.id as id, s.student_name as studentName, '会议申请' as approvalContent, ag.tutor_status as
+        approvalStatus
+        from meeting ag;
+        left join student s = s.student_id = ag.student_id
+        where ag.staff_id = #{staffId}
+    </select>
+
+
+</mapper>
