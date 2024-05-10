@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 /**
  * @author Wenqi Wang, Meng wang
  * @version 1.0
@@ -48,6 +49,13 @@ public class MeetingController extends BaseController{
         startPage();
         List<Meeting> list = meetingService.selectMeetingByTeacher(meeting);
         return getDataTable(list);
+    }
+
+    private void startPage() {
+    }
+
+    private TableDataInfo getDataTable(List<Meeting> list) {
+        return null;
     }
 
     /**

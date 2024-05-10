@@ -1,6 +1,7 @@
 package com.management.utils;
 
-import com.luoran.common.core.utils.ServletUtils;
+import cn.hutool.extra.servlet.ServletUtil;
+
 
 /**
  * Tabular data processing

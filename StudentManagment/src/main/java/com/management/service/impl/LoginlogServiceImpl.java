@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.management.mapper.Mapper.LoginLogMapper;
 import com.management.Parametric.LoginLog;
 import com.management.service.services.LoginLogService;
-//import com.managent.utils.EnumCode;
+import com.management.utils.EnumCode;
 import com.management.utils.ResultUtil;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +18,9 @@ public class LoginlogServiceImpl extends ServiceImpl<LoginLogMapper, LoginLog> i
     /**
      * :: Querying the number of logins
      */
-    public Integer findMaxLoginTatalByUserId(String usrId) {
-        return super.baseMapper.findMaxLoginTatalByUserId(usrId);
-    }
+    public Integer findMaxLoginTotalByUserId(String usrId) {
 
-    @Override
-    public Integer findMaxLoginTotalByUserId(String userId) {
-        return null;
+        return super.baseMapper.findMaxLoginTotalByUserId(usrId);
     }
 
     /**

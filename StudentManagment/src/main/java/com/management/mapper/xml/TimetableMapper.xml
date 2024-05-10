@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.management.Parametric.TimetableMapper">
+
+    <!-- ResultMap to Define SQL-to-Java Object Mappings -->
+    <resultMap id="TimetableResultMap" type="com.management.Parametric.Timetable">
+        <id column="timetable_id" property="timetableId" />
+        <result column="module_id" property="moduleId" />
+        <result column="student_id" property="studentId" />
+        <result column="teacher_id" property="teacherId" />
+        <result column="day_of_week" property="dayOfWeek" />
+        <result column="module_start_day" property="moduleStartDay" />
+        <result column="module_end_day" property="moduleEndDay" />
+        <result column="module_start_time" property="moduleStartTime" />
+        <result column="module_end_time" property="moduleEndTime" />
+    </resultMap>
+
+    <!-- SQL Select Statement -->
+    <select id="selectTimetableById" resultMap="TimetableResultMap">
+        SELECT *
+        FROM timetable
+        WHERE timetable_id = #{timetableId}
+    </select>
+
+    <!-- SQL Insert Statement -->
+    <insert id="insertTimetable">
+        INSERT INTO timetable (timetable_id, module_id, student_id, teacher_id, day_of_week, module_start_day, module_end_day, module_start_time, module_end_time)
+        VALUES (#{timetableId}, #{moduleId}, #{studentId}, #{teacherId}, #{dayOfWeek}, #{moduleStartDay}, #{moduleEndDay}, #{moduleStartTime}, #{moduleEndTime})
+    </insert>
+
+    <!-- SQL Update Statement -->
+    <update id="updateTimetable">
+        UPDATE timetable
+        SET module_id = #{moduleId},
+            student_id = #{studentId},
+            teacher_id = #{teacherId},
+            day_of_week = #{dayOfWeek},
+            module_start_day = #{moduleStartDay},
+            module_end_day = #{moduleEndDay},
+            module_start_time = #{moduleStartTime},
+            module_end_time = #{moduleEndTime}
+        WHERE timetable_id = #{timetableId}
+    </update>
+
+    <!-- SQL Delete Statement -->
+    <delete id="deleteTimetable">
+        DELETE FROM timetable
+        WHERE timetable_id = #{timetableId}
+    </delete>
+
+</mapper>

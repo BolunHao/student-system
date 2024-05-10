@@ -11,37 +11,37 @@ import java.util.Map;
 public interface AuthorityService extends IService<Authority> {
     List<Authority> loadUserResources(Map map);
     /**
-     * @desc: Query menu
+     * @desc: Enquiry Menu
      */
     List<Authority> findPermissionByPage(Page<Authority> page, String permsName);
 
     /**
-     * @desc: Add menu
+     * @desc: New menu
      */
     Object addPermissions(Authority vo);
 
     /**
-     * @desc: Delete Menu
+     * @desc: Delete menu
      */
     Object delPermis(String[] ids);
 
     /**
-     * @desc: Query menu according to menu
+     * @desc: Search menu by menu
      */
     List<Authority> findPermissionByName(String name);
 
     /**
-     * @desc: Query the upper-level menu based on the parent id
+     * @desc: Query parent menu by parent id
      */
     List<Authority> findLastPermissionByType(String type);
 
     /**
-     * @desc: Example Query all parent menu binding trees
+     * @desc: Query all parent menu bindings tree
      */
     List<Authority> findBasePermission();
 
     /**
-     * Query records based on url
+     * Query records according to url
      */
     Integer findCountByUrl(String requestUrl);
 }

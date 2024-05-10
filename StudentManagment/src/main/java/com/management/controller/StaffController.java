@@ -75,7 +75,7 @@ public class StaffController extends BaseController{
     }
 
     /**
-     * 删除教师
+     * Delete Teachers
      *
      */
     @DeleteMapping("/{ids}")
@@ -84,15 +84,24 @@ public class StaffController extends BaseController{
     }
 
     /**
-     * 所有学生交互申请统一显示在教师的任务管理界面由教师同意进行确认和拒绝，不对信息类型作区分，全部分页展示；
-     * pageNum 当前页码
-     * pageSize 每页显示条数
+     *
+     * All student interaction requests are uniformly displayed in the teacher's
+     * task management interface for confirmation and rejection by the teacher's
+     * consent, with no distinction made between information types, and all are
+     * displayed on separate pages;
+     *
+     * pageNum Current page number
+     * pageSize Number of articles per page
      */
     @GetMapping("/selectApplyByStaffId")
     public TableDataInfo selectApplyByStaffId(ApprovalVO approvalVO) {
         startPage();
         List<ApprovalVO> list = staffService.selectApplyByStaffId(approvalVO);
-        return getDataTable(list);
+
+        return null;
+    }
+
+    private void startPage() {
     }
 
 }

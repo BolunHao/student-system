@@ -9,22 +9,22 @@ import java.util.List;
 public interface RoleService extends IService<Role> {
 
     /**
-     * @desc: query role
+     * @desc: Query Role
      */
     List<Role> findRoleByPage(Page<Role> page, String roleName);
 
     /**
-     * @desc: Add role
+     * @desc: New Characters
      */
     Object addRoles(Role vo);
 
     /**
-     * @desc: remove role
+     * @desc: Delete Role
      */
     Object delRole(String[] ids);
 
     /**
-     * The Bind role drop-down box
+     * Bind Role drop-down box
      */
     List<Role> findAllRoles();
 }

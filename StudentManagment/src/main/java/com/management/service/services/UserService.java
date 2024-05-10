@@ -11,47 +11,51 @@ import java.util.List;
 
 public interface UserService extends IService<User>{
 
-    //Unpaginated query
+    //unpaged query
     List<User> findAllUser(User user);
 
     /**
-     * Query users by user name
+     * Search for users by user name
      */
     User findUserByUsername(String username);
 
     /**
-     * log in
+     * Login
      */
     Object login(User user, HttpSession session, HttpServletRequest request);
 
     /**
-     * @desc: add new users
+     * @desc: new subscriber
      */
     Object addUser(User user);
 
 
     /**
-     * @desc: Query User
+     * @desc: user search
      */
     List<User> findUserByPage(Page<User> page, User user);
 
     /**
-     * @desc: Deleting Users in batches
+     * @desc: Batch Delete Users
      */
     Object delUsers(String[] ids);
 
     /**
-     * @desc: Login verification
+     * @desc: login authentication
      */
     List<User> checkUser(User user);
 
     /**
-     * Modify User status
+     * Modify user status
      */
     Object editUserStatus(User user);
 
     /**
-     * User modifies user personal information
+     * Modification of User's Personal Information by the User
      */
     Object editUserInfo(User user);
+
+    User findById(String userId);
+
+    void updateUser(User user);
 }

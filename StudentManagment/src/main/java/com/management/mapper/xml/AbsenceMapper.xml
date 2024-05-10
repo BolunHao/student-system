@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.management.mapper.AbsenceMapper">
+
+    <!-- Result Map defining how to map columns to the Absence class fields -->
+    <resultMap id="absenceResultMap" type="com.management.Parametric.Absence">
+        <id column="id" property="id"/>
+        <result column="absence_id" property="absenceId"/>
+        <result column="absence_reason" property="absenceReason"/>
+        <result column="student_id" property="studentId"/>
+        <result column="staff_id" property="staffId"/>
+        <result column="timetable_id" property="timetableId"/>
+        <result column="absence_status" property="absenceStatus"/>
+    </resultMap>
+
+    <!-- SQL to fetch all absences -->
+    <select id="selectAllAbsences" resultMap="absenceResultMap">
+        SELECT * FROM absence
+    </select>
+
+    <!-- SQL to fetch a single absence by ID -->
+    <select id="selectAbsenceById" parameterType="String" resultMap="absenceResultMap">
+        SELECT * FROM absence WHERE id = #{id}
+    </select>
+
+    <!-- SQL to insert a new absence record -->
+    <insert id="insertAbsence">
+        INSERT INTO absence (id, absence_id, absence_reason, student_id, staff_id, timetable_id, absence_status)
+        VALUES (#{id}, #{absenceId}, #{absenceReason}, #{studentId}, #{staffId}, #{timetableId}, #{absenceStatus})
+    </insert>
+
+    <!-- SQL to update an existing absence -->
+    <update id="updateAbsence">
+        UPDATE absence
+        SET absence_reason = #{absenceReason},
+            student_id = #{studentId},
+            staff_id = #{staffId},
+            timetable_id = #{timetableId},
+            absence_status = #{absenceStatus}
+        WHERE id = #{id}
+    </update>
+
+    <!-- SQL to delete an absence -->
+    <delete id="deleteAbsence" parameterType="String">
+        DELETE FROM absence WHERE id = #{id}
+    </delete>
+
+</mapper>

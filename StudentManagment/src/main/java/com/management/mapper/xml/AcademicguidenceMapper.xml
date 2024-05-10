@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.management.mapper.AcademicGuidenceMapper">
+
+    <!-- Result Map to define how database columns map to class fields -->
+    <resultMap id="academicGuidenceResultMap" type="com.management.Parametric.AcademicGuidence">
+        <id column="id" property="id"/>
+        <result column="academic_id" property="academicId"/>
+        <result column="student_id" property="studentId"/>
+        <result column="staff_id" property="staffId"/>
+        <result column="application_deadline" property="applicationDeadline" javaType="org.joda.time.DateTime"/>
+        <result column="tutor_status" property="tutorStatus"/>
+        <result column="content" property="content"/>
+    </resultMap>
+
+    <!-- SQL to fetch all academic guidance records -->
+    <select id="selectAllAcademicGuidences" resultMap="academicGuidenceResultMap">
+        SELECT * FROM academic_guidence
+    </select>
+
+    <!-- SQL to fetch a single academic guidance record by ID -->
+    <select id="selectAcademicGuidenceById" parameterType="int" resultMap="academicGuidenceResultMap">
+        SELECT * FROM academic_guidence WHERE id = #{id}
+    </select>
+
+    <!-- SQL to insert a new academic guidance record -->
+    <insert id="insertAcademicGuidence">
+        INSERT INTO academic_guidence (academic_id, student_id, staff_id, application_deadline, tutor_status, content)
+        VALUES (#{academicId}, #{studentId}, #{staffId}, #{applicationDeadline}, #{tutorStatus}, #{content})
+    </insert>
+
+    <!-- SQL to update an existing academic guidance -->
+    <update id="updateAcademicGuidence">
+        UPDATE academic_guidence
+        SET academic_id = #{academicId},
+            student_id = #{studentId},
+            staff_id = #{staffId},
+            application_deadline = #{applicationDeadline},
+            tutor_status = #{tutorStatus},
+            content = #{content}
+        WHERE id = #{id}
+    </update>
+
+    <!-- SQL to delete an academic guidance -->
+    <delete id="deleteAcademicGuidence" parameterType="int">
+        DELETE FROM academic_guidence WHERE id = #{id}
+    </delete>
+
+</mapper>

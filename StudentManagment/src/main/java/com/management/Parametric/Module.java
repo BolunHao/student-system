@@ -14,7 +14,7 @@ public class Module implements Serializable{
     private String id;
     private String name;         //course name
     @TableField(exist = false)
-    private Double credit;       //credits(学分)
+    private Double credit;       //credits
     private String moduleId;
     @TableField(exist = false)
     private Double module_file;   //module file

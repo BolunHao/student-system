@@ -33,4 +33,6 @@ public class MeetingServiceImpl extends ServiceImpl<MeetingMapper, Meeting> {
         return baseMapper.selectList(wrapper);
 
     }
+
+
 }

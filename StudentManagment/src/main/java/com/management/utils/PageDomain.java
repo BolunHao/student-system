@@ -1,7 +1,7 @@
 package com.management.utils;
 
 /**
- * 分页数据
+ * paged data
  * @author Meng Wang
  * @version 1.0
  * @since 2024-04-21

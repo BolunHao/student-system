@@ -9,22 +9,22 @@ import java.util.List;
 public interface RoleAuthorityService extends IService<RoleAuth> {
 
     /**
-     * Add role Permissions
+     * Adding Role Privileges
      */
-    Object addRolesPermis(RoleAuth vo);
+    Object addRolesAuth(RoleAuth vo);
 
     /**
-     * Query role rights by role
+     * Querying Role Permissions by Role
      */
-    List<RoleAuth> findRolesPermisByRole(String roleId);
+    List<RoleAuth> findRolesAuthByRole(String roleId);
 
     /**
-     * Query the number of records based on the role id
+     * Query the number of records according to the role id
      */
     Integer findCountByRole(String roleId, String url);
 
     /**
-     * Query the role menu according to the parent id\ user type
+     * Query role menu by parent id \ user type
      */
     List<Authority> findRolesPermisByFatherId(String fatherId, String roleId);
 }

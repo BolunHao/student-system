@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * @author Meng Wang
  * @version 1.0
- * @since 2024-04-22
+ * @since 2024-04-23
  */
 @Data
 public class ApprovalVO extends BaseEntity {

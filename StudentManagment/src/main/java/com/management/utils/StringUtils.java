@@ -22,7 +22,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
      * Gets a parameter that is not null
      * 
      * @param value defaultValue The value to be judged
-     * @return value 返回值
+     * @return value return value
      */
     public static <T> T nvl(T value, T defaultValue)
     {

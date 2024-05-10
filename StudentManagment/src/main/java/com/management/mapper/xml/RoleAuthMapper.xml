@@ -31,7 +31,7 @@
     </select>
 
 
-    <!-- Query menu based on parent id -->
+    <!-- Query menu by parent id -->
     <select id="findRolesPermisByFatherId" resultType="com.alan.pojo.Perms">
         <if test="null == parentId">
             SELECT

@@ -33,7 +33,7 @@ public class StudentController {
      */
     @GetMapping("/list")
     public AjaxResult list(Student student) {
-        // 创建查询参数
+        // Creating Query Parameters
         EntityWrapper<Student> wrapper = new EntityWrapper<>();
         wrapper.like(StringUtils.isNotEmpty(student.getName()), "name", student.getName());
         wrapper.like(StringUtils.isNotEmpty(student.getStudentNumber()), "student_number", student.getStudentNumber());

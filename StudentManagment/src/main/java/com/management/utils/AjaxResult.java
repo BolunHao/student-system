@@ -144,4 +144,7 @@ public class AjaxResult extends HashMap<String, Object> {
     {
         return new AjaxResult(code, msg, null);
     }
+
+    public void setCredentialsMatcher(CredentialsMatcher credentialsMatcher) {
+    }
 }

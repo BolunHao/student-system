@@ -1,14 +1,55 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.management.mapper.StudentMapper">
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<!-- Result Map to define how database columns map to class fields -->
+<resultMap id="studentResultMap" type="com.management.Parametric.Student">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="student_number" property="studentNumber"/>
+    <result column="sex" property="sex"/>
+    <result column="phone" property="phone"/>
+    <result column="photo_url" property="photoUrl"/>
+    <result column="email" property="email"/>
+    <result column="major_id" property="majorId"/>
+    <!-- majorName and ids are marked as 'exist=false', no mapping needed -->
+</resultMap>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.management.mapper.xml.StudentXml"
-            prefHeight="400.0" prefWidth="600.0">
+<!-- SQL to fetch all students -->
+<select id="selectAllStudents" resultMap="studentResultMap">
+    SELECT * FROM t_student
+</select>
 
-</AnchorPane>
+<!-- SQL to fetch a single student by ID -->
+<select id="selectStudentById" parameterType="String" resultMap="studentResultMap">
+    SELECT * FROM t_student WHERE id = #{id}
+</select>
+
+<!-- SQL to insert a new student record -->
+<insert id="insertStudent">
+    INSERT INTO t_student (id, name, student_number, sex, phone, photo_url, email, major_id)
+    VALUES (#{id}, #{name}, #{studentNumber}, #{sex}, #{phone}, #{photoUrl}, #{email}, #{majorId})
+</insert>
+
+<!-- SQL to update an existing student -->
+<update id="updateStudent">
+    UPDATE t_student
+    SET name = #{name},
+    student_number = #{studentNumber},
+    sex = #{sex},
+    phone = #{phone},
+    photo_url = #{photoUrl},
+    email = #{email},
+    major_id = #{majorId}
+    WHERE id = #{id}
+</update>
+
+<!-- SQL to delete a student -->
+<delete id="deleteStudent" parameterType="String">
+    DELETE FROM t_student WHERE id = #{id}
+</delete>
+
+</mapper>
+
