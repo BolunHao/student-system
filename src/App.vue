@@ -36,34 +36,31 @@ export default {
 <style>
 #app {
   display: flex;
-  flex-direction: column; /* 垂直布局 */
-  align-items: stretch; /* 拉伸以填充容器 */
-
-}
-.main-content {
+  flex-direction: column; 
+  align-items: stretch; 
 
 }
 .content {
   display: flex;
-  flex: 1; /* 让内容部分占据剩余空间 */
+  flex: 1; 
 }
 
 .sidebar {
-  background-color: black; /* 将背景色设为黑色 */
-  color: white; /* 将文字颜色设为白色 */
+  background-color: black; 
+  color: white; 
   padding: 30px;
-  min-width: 150px; /* 设置侧边栏宽度 */
-  height: 100vh; /* 让导航栏高度布满页面 */
+  min-width: 150px; 
+  height: 100vh; 
 }
 
 .links {
-  margin-bottom: 30px; /* 调整导航链接和头像之间的垂直间距 */
+  margin-bottom: 30px; 
 }
 
 .link {
   font-size: 20px;
-  margin-bottom: 10px; /* 调整链接之间的垂直间距 */
-  display: block; /* 使链接占据一整行 */
+  margin-bottom: 10px; 
+  display: block; 
   text-decoration: none;
   color: white;
   margin-top : 20%;
@@ -72,12 +69,12 @@ export default {
 
 .avatar-container {
   display: flex;
-  flex-direction: column; /* 垂直排列 */
-  align-items: center; /* 水平居中 */
-  /* 将头像和姓名推到页面最底部 */
-  margin-top: 100%; /* 使得头像和姓名推到页面最底部 */
+  flex-direction: column; 
+  align-items: center; 
+  
+  margin-top: 100%; 
 
-  margin-bottom: 20px; /* 调整头像和页面底部的垂直间距 */
+  margin-bottom: 20px; 
 }
 
 .avatar-link {
@@ -99,7 +96,7 @@ export default {
 .name-link {
   font-size: 18px;
   text-decoration: none;
-  margin-top: 10px; /* 姓名与头像间距 */
+  margin-top: 10px; 
   color : white;
 }
 </style>

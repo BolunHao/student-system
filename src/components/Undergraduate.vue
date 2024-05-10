@@ -1,17 +1,17 @@
 <template>
   <div class="courses-selection">
-    <!-- 左侧年级选项 -->
+    <!-- Left grade option -->
     <div class="year-options">
       <h2></h2>
 
       <button class="year-button" @click="showCourses('Year1')">Year 1</button>
       <button class="year-button" @click="showCourses('Year2')">Year 2</button>
-      <!-- 在这里添加更多年级的选项 -->
+      <!-- Add more grade options here -->
     </div>
-    <!-- 右侧显示选定年级的课程 -->
+    <!-- On the right side, courses for the selected grade are displayed -->
     <div class="selected-courses">
       <h2>{{ selectedYear }}</h2>
-      <!-- 课程列表 -->
+      <!-- Course list -->
 
       <div class="courses-grid">
         <div
@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-     <!-- 课程详细信息模态框 -->
+     <!-- Course details modal box -->
      <div v-if="selectedCourse" class="modal">
   <div class="modal-content">
     <span class="close" @click="closeModal">&times;</span>
@@ -71,9 +71,9 @@ export default {
     this.selectedCourse = null;
   },
   applyCourse() {
-    // 在这里处理申请按钮的点击事件，可以发送申请请求等操作
+    // The click of the application button is processed here, and operations such as sending application requests can be sent
     console.log('Course applied:', this.selectedCourse);
-    // 这里只是示例，你可以根据实际情况进行相应的操作
+    // Here are just examples, you can act accordingly according to the actual situation
     alert('Course applied!');
   }
 }
@@ -84,49 +84,49 @@ export default {
 <style>
 .courses-selection {
   display: flex;
-  justify-content: space-between; /* 左右分布 */
-  align-items: flex-start; /* 上对齐 */
+  justify-content: space-between; /* Left-right distribution */
+  align-items: flex-start; /* Top justification */
   margin-top: 20px;
 }
 
 .year-options {
-  flex: 1; /* 左侧占据空间 */
-  margin-right: 20px; /* 右侧留出间距 */
-  display: flex; /* 使用 flex 布局 */
-  flex-direction: column; /* 垂直排列 */
-  align-items: center; /* 居中对齐 */
+  flex: 1; /* Left hand space */
+  margin-right: 20px; /* Right margin */
+  display: flex; /* Using flex Layout */
+  flex-direction: column; /* Vertical arrangement */
+  align-items: center; /* Center align */
   margin-top : 20%;
 }
 
 .year-options h2 {
-  margin-bottom: 10px; /* 设置标题的底部间距 */
+  margin-bottom: 10px; /* Set the bottom spacing of the title */
 }
 
 .year-button {
-  margin-bottom: 10px; /* 设置按钮之间的间距 */
+  margin-bottom: 10px; /* Set the spacing between buttons */
   padding: 8px 12px;
   width : 100px;
 }
-/* 新的按钮样式 */
+/* New button style */
 .year-button {
   margin-bottom: 30px;
   width: 150px;
   padding: 10px;
   border-radius: 4px;
   cursor: pointer;
-  background-color: #4CAF50; /* 设置按钮背景色 */
-  color: white; /* 设置按钮文字颜色 */
-  border: none; /* 移除按钮边框 */
-  outline: none; /* 移除按钮点击时的外边框 */
-  transition: background-color 0.3s; /* 添加过渡效果 */
+  background-color: #4CAF50; 
+  color: white; 
+  border: none; 
+  outline: none; 
+  transition: background-color 0.3s; 
 }
 
 .year-button:hover {
-  background-color: #45a049; /* 悬停时的背景色 */
+  background-color: #45a049; 
 }
 
 .selected-courses {
-  flex: 2; /* 右侧占据更多空间 */
+  flex: 2; 
 
 }
 
@@ -141,13 +141,13 @@ export default {
   margin-right: 10px; 
   padding: 10px;
   border: 1px solid #ccc;
-  box-sizing: border-box; /* 添加盒模型的属性 */
+  box-sizing: border-box; 
 }
 .course:hover {
 
-  cursor: pointer; /* 鼠标指针样式 */
+  cursor: pointer; 
 }
-/* 调整课程项的大小 */
+
 @media (max-width: 768px) {
   .course {
     flex: 0 0 calc(50% - 10px);

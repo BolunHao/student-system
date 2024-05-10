@@ -24,12 +24,12 @@ export default {
   methods: {
     handleAvatarUpload(event) {
       const file = event.target.files[0];
-      // 检查文件类型是否为图片
+      // Check whether the file type is image
       if (!file.type.startsWith('image/')) {
         alert('Please select an image file.');
         return;
       }
-      // 在这里处理上传头像的逻辑，可以使用第三方库或者自己写上传逻辑
+      // To handle the logic of uploading avatars here, you can use third-party libraries or write your own upload logic
       console.log('Selected file:', file);
     }
   }
@@ -37,10 +37,10 @@ export default {
 </script>
 
 <style>
-/* 导入 Google Fonts */
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* profile样式 */
+/* profile style */
 .profile {
   width: 400px;
   text-align: center;
@@ -49,14 +49,14 @@ export default {
 
 }
 
-/* 按钮样式 */
+/* Button style */
 .button {
   flex: 0 0 calc(50% - 10px);
   margin-bottom: 20px;
   margin-right: 10px; 
   padding: 10px;
   border: 1px solid #ccc;
-  box-sizing: border-box; /* 添加盒模型的属性 */
+  box-sizing: border-box; /* Add the properties of the box model */
   background: rgb(239, 239, 239);
   color: black;
 }
@@ -65,12 +65,12 @@ export default {
   background-color: rgb(229, 229, 229);
 }
 
-/* 上传按钮样式 */
+/* Upload button style */
 .upload-button {
   display: inline-block;
 }
 
-/* 隐藏上传按钮 */
+/* Hide upload button */
 #avatar-upload {
   display: none;
 }

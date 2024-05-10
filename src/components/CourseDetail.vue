@@ -4,7 +4,7 @@
     <p>{{ course.description }}</p>
 
     <div class="panel-container">
-      <!-- 左侧按钮 -->
+      <!-- Left button -->
       <div class="left-panel">
         <div class="button-group">
           <button @click="showContent('syllabus')">Syllabus</button>
@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <!-- 右侧内容 -->
+      <!-- Right side content -->
       <div class="right-panel">
         <div v-if="courseContent.syllabus" class="content-item" v-show="currentContent === 'syllabus'">
           <h3>Syllabus</h3>
@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import { fakeAPI } from '@/api/api'; // 引入 API 文件
+import { fakeAPI } from '@/api/api'; // Import API file
 
 export default {
   name: 'CourseDetail',
@@ -114,39 +114,39 @@ export default {
       },
       weekdays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
       timeSlots: ['8:00 - 10:00', '10:00 - 12:00', '13:00 - 15:00', '15:00 - 17:00'],
-      meetingSchedule: [], // 存储会议时间表
-      meetings: ['Meeting 1', 'Meeting 2', 'Meeting 3'], // 可选的会议
-      selectedMeeting: {}, // 用户选择的会议
-      applying: {}, // 是否正在申请会议
-      meetingApplied: {}, // 是否已申请会议
-      meetingStatus: {}, // 会议申请状态：successed、failed
-      currentContent: '' // 当前显示的内容
+      meetingSchedule: [], // Save meeting schedule
+      meetings: ['Meeting 1', 'Meeting 2', 'Meeting 3'], // Optional meeting
+      selectedMeeting: {}, // User selected meeting
+      applying: {}, // Whether you are applying for a meeting
+      meetingApplied: {}, // Whether you have requested a meeting
+      meetingStatus: {}, // Meeting request status：successed、failed
+      currentContent: '' // The content currently displayed
     };
   },
   created() {
-    // 在组件创建时获取课程详细信息
+    // Get course details at component creation time
     this.getCourseDetail(this.code);
-    this.loadMeetingSchedule(); // 加载会议时间表
+    this.loadMeetingSchedule(); // Loading meeting schedule
   },
   methods: {
     async getCourseDetail(code) {
-      // 使用 fakeAPI 中定义的函数来获取课程信息
+      // Use the functions defined in fakeAPI to get course information
       const courses = await fakeAPI.getCourses();
-      // 根据课程 code 查找对应的课程信息
+      // Find the corresponding course information according to the course code
       this.course = courses.find(course => course.code === code);
     },
     async showContent(content) {
-      // 使用 fakeAPI 中定义的函数来获取课程内容
+      // Use the functions defined in fakeAPI to get the course content
       const courseContent = await fakeAPI.getCourseContent(this.code);
-      // 先重置 courseContent 对象
+      // Reset the courseContent object first
       this.courseContent = {};
-      // 根据传入的 content 参数来设置课程内容
+      // The course content is set according to the content parameter passed in
       switch (content) {
         case 'syllabus':
           this.courseContent = { syllabus: courseContent.syllabus };
           break;
         case 'assignments':
-          // 单独使用fakeAPI的getAssignments
+          // getAssignments using fakeAPI alone
           this.courseContent = { assignments: await fakeAPI.getAssignments(this.code) };
           break;
         case 'grade':
@@ -162,13 +162,13 @@ export default {
           this.courseContent = {};
           break;
       }
-      this.currentContent = content; // 更新当前显示的内容
+      this.currentContent = content; // Update the current display
     },
 
     async loadMeetingSchedule() {
-      // 模拟加载会议时间表，这里使用 setTimeout 模拟异步请求延迟
+      // Simulate loading the meeting schedule, using setTimeout to simulate asynchronous request latency
       setTimeout(() => {
-        // 假设会议时间表数据
+        // Assume meeting schedule data
         this.meetingSchedule = [
           { day: 'Monday', time: '8:00 - 10:00', course: 'Physics' },
           { day: 'Tuesday', time: '10:00 - 12:00', course: 'Math' },
@@ -177,7 +177,7 @@ export default {
           { day: 'Friday', time: '8:00 - 10:00', course: 'History' }
         ];
 
-        // 初始化下拉菜单和申请状态数据
+        // Initialize the drop-down menu and request status data
         for (let i = 0; i < this.meetingSchedule.length; i++) {
           const { day, time } = this.meetingSchedule[i];
           this.$set(this.selectedMeeting, `${day}-${time}`, '');
@@ -185,7 +185,7 @@ export default {
           this.$set(this.meetingApplied, `${day}-${time}`, false);
           this.$set(this.meetingStatus, `${day}-${time}`, null);
         }
-      }, 2000); // 模拟2秒延迟
+      }, 2000); // Simulate 2 second delay
     },
 
     hasCourse(day, timeSlot) {
@@ -198,26 +198,26 @@ export default {
     },
 
     applyMeeting(day, timeSlot) {
-      this.$set(this.applying, `${day}-${timeSlot}`, true); // 设置申请状态为 true
-      // 模拟申请会议的过程
+      this.$set(this.applying, `${day}-${timeSlot}`, true); // Set the application status to true
+      // Simulate the process of applying for a meeting
       setTimeout(() => {
-        // 随机生成会议申请状态
+        // The conference application status is randomly generated
         const status = Math.random() < 0.5 ? 'successed' : 'failed';
         this.$set(this.meetingStatus, `${day}-${timeSlot}`, status);
         this.$set(this.applying, `${day}-${timeSlot}`, false);
         this.$set(this.meetingApplied, `${day}-${timeSlot}`, true);
-      }, 2000); // 模拟2秒延迟
+      }, 2000); // Simulate 2 second delay
     },
 
     submitAssignment() {
-      // 在这里添加提交作业的逻辑
+      // Add the logic for submitting the job here
       console.log('Submitting assignment:', this.courseContent.assignments);
     }
   }
 };
 </script>
 <style scoped>
-/* 导入 Google Fonts */
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 .course-detail {
   margin-top: 20px;
@@ -241,15 +241,15 @@ export default {
   padding: 10px;
   border-radius: 4px;
   cursor: pointer;
-  background-color: #4CAF50; /* 设置按钮背景色 */
-  color: white; /* 设置按钮文字颜色 */
-  border: none; /* 移除按钮边框 */
-  outline: none; /* 移除按钮点击时的外边框 */
-  transition: background-color 0.3s; /* 添加过渡效果 */
+  background-color: #4CAF50; /* Set the button background color */
+  color: white; /* Set the button text color */
+  border: none; /* Remove button border */
+  outline: none; /* Remove the outer border when the button is clicked */
+  transition: background-color 0.3s; /* Add transition effect */
 }
 
 .button-group button:hover {
-  background-color: #45a049; /* 悬停时的背景色 */
+  background-color: #45a049; /* Hover background color */
 }
 
 .right-panel {
@@ -258,9 +258,9 @@ export default {
 }
 
 .content-item {
-  width: 800px; /* 设置固定宽度 */
-  overflow-x: auto; /* 添加水平滚动条 */
-  overflow-y: auto; /* 添加垂直滚动条 */
+  width: 800px; /* Set fixed width */
+  overflow-x: auto; /* Add a horizontal scroll bar */
+  overflow-y: auto; /* Add a vertical scroll bar */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -308,33 +308,33 @@ export default {
 }
 
 .meeting-schedule th:first-child {
-  width: 50px; /* 时间列宽度 */
+  width: 50px; /* Time column width */
 }
 
 .meeting-schedule th:last-child {
-  width: calc(100% - 50px); /* 课程列宽度 */
+  width: calc(100% - 50px); /* Course column width */
 }
 
 .meeting-schedule td:last-child {
-  text-align: left; /* 课程列文本左对齐 */
+  text-align: left; /* The course column text is left justified */
 }
 
 select {
   margin-right: 10px;
 }
 
-/* 新增的表格样式 */
+/* New table styles */
 table {
-  width: 80%; /* 根据需要设置表格宽度 */
+  width: 80%; /* Set the table width as required */
 }
 
 th, td {
-  border: 1px solid #ddd; /* 添加单元格边框 */
-  padding: 8px; /* 添加单元格内边距 */
-  text-align: center; /* 将单元格文本居中 */
+  border: 1px solid #ddd; /* Adds a cell border */
+  padding: 8px; /* Adds margins inside cells */
+  text-align: center; /* Center cell text */
 }
 
 th {
-  background-color: #f2f2f2; /* 设置表头背景颜色 */
+  background-color: #f2f2f2; /* Sets the header background color */
 }
 </style>

@@ -5,21 +5,21 @@
     <button class="button" @click="toggleInstructions('suspend')">Suspend</button>
     <button class="button" @click="toggleInstructions('withdraw')">Withdraw</button>
 
-    <!-- 休学办理说明 -->
+    <!-- leave of absence handling instructions -->
     <div v-if="showSuspendInstructions" class="instructions">
-      <p>休学办理说明：</p>
+      <p>withdrawal handling instructions：</p>
       <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
       <button class="submit-button" @click="apply('suspend')">Submit</button>
     </div>
 
-    <!-- 退学办理说明 -->
+    <!-- withdrawal handling instructions -->
     <div v-if="showWithdrawInstructions" class="instructions">
-      <p>退学办理说明：</p>
+      <p>withdrawal handling instructions：</p>
       <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
       <button class="submit-button" @click="apply('withdraw')">Submit</button>
     </div>
     
-    <!-- Applying 状态 -->
+    <!-- Applying status -->
     <div v-if="applying" class="applying-message">Applying...</div>
   </div>
 </template>
@@ -31,34 +31,34 @@ export default {
     return {
       showSuspendInstructions: false,
       showWithdrawInstructions: false,
-      applying: false // 添加 applying 状态，用于控制提交状态显示
+      applying: false // add applying status，used to control the display of submission status
     };
   },
   methods: {
     toggleInstructions(type) {
       if (type === 'suspend') {
         this.showSuspendInstructions = !this.showSuspendInstructions;
-        this.showWithdrawInstructions = false; // 隐藏退学说明文本
+        this.showWithdrawInstructions = false; // hide the withdrawal instructions text
       } else if (type === 'withdraw') {
         this.showWithdrawInstructions = !this.showWithdrawInstructions;
-        this.showSuspendInstructions = false; // 隐藏休学说明文本
+        this.showSuspendInstructions = false; // hide the leave of absence instructions text
       }
     },
     apply(type) {
-      console.log(`Applying for ${type}`); // 输出申请类型  
-      // 这里模拟提交状态
+      console.log(`Applying for ${type}`); // output application type  
+      // simulate submission status here
       this.applying = true;
       setTimeout(() => {
-        // 模拟提交完成后的操作
+        // Simulate the action after the commit is complete
         this.applying = false;
-      }, 2000); // 2秒后恢复正常状态
+      }, 2000); // It will return to normal after 2 seconds
     }
   }
 }
 </script>
 
 <style scoped>
-/* 导入 Google Fonts */
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 .course-detail {
@@ -88,9 +88,9 @@ export default {
 }
 
 .content-item {
-  width: 800px; /* 设置固定宽度 */
-  overflow-x: auto; /* 添加水平滚动条 */
-  overflow-y: auto; /* 添加垂直滚动条 */
+  width: 800px; /* Set fixed width */
+  overflow-x: auto; /* Add a horizontal scroll bar */
+  overflow-y: auto; /* Add a vertical scroll bar */
 }
 
 .course-details h3 {
@@ -135,22 +135,22 @@ export default {
 }
 
 .meeting-schedule th:first-child {
-  width: 50px; /* 时间列宽度 */
+  width: 50px; /* Time column width */
 }
 
 .meeting-schedule th:last-child {
-  width: calc(100% - 50px); /* 课程列宽度 */
+  width: calc(100% - 50px); /* Course column width */
 }
 
 .meeting-schedule td:last-child {
-  text-align: left; /* 课程列文本左对齐 */
+  text-align: left; /* The course column text is left justified */
 }
 
 select {
   margin-right: 10px;
 }
 
-/* 新增的样式 */
+/* New style */
 .change-status {
   text-align: center;
   width : 100%;
@@ -158,14 +158,14 @@ select {
   margin-left: 250%;
 }
 
-/* 按钮样式 */
+/* Button style */
 .button {
   flex: 0 0 calc(50% - 10px);
   margin-bottom: 20px;
   margin-right: 10px; 
   padding: 10px;
   border: 1px solid #ccc;
-  box-sizing: border-box; /* 添加盒模型的属性 */
+  box-sizing: border-box; /* Add the properties of the box model */
   background: rgb(239, 239, 239);
   color: black;
 }
@@ -175,14 +175,14 @@ select {
 }
 .instructions {
  
-  position: relative; /* 添加相对定位 */
+  position: relative; /* Add relative positioning */
 }
 
 .submit-button {
 
-  bottom: 0; /* 按钮位于底部 */
-  right: 0; /* 按钮位于右侧 */
-  margin: 10px; /* 添加一些外边距 */
+  bottom: 0; /* Button at bottom */
+  right: 0; /* Button on the right */
+  margin: 10px; /* Add some margins */
   margin-left : 50%;
   padding: 8px 16px;
   background: rgb(239, 239, 239);

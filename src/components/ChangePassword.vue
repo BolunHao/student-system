@@ -1,8 +1,10 @@
 <template>
+  <!-- This section contains a Change Password form within a 'change-password' div. The form is designed to allow users to update their current password. It starts with a heading 'Change Password' for clarity. The form itself is structured into three parts: one for the current password, one for the new password, and another to confirm the new password. Each part is encapsulated in a 'form-group' div, which includes a label and a password input field. The input fields are bound to Vue data properties using the v-model directive, ensuring the form is reactive and the data entered by the user is immediately synchronized with the component's data. The form uses Vue's event modifier @submit.prevent to prevent the default form submission behavior, allowing the 'changePassword' method to handle the submission process. This method is expected to validate and process the password change request. A button at the end labeled 'Change Password' triggers the form submission. This setup ensures that the process is user-friendly and secure, requiring users to input their current password for verification before a new password can be set. -->
+  <div class="change-password">
     <div class="change-password">
       <h2>Change Password</h2>
   
-      <!-- 修改密码表单 -->
+      <!-- Change Password Form -->
       <form @submit.prevent="changePassword">
         <div class="form-group">
           <label for="current-password">Current Password:</label>
@@ -19,6 +21,7 @@
         <button type="submit" class="button">Change Password</button>
       </form>
     </div>
+  </div>
   </template>
   
   <script>
@@ -33,7 +36,7 @@
     },
     methods: {
       changePassword() {
-        // 在这里处理修改密码逻辑
+        // Handle the change password logic here.
         console.log('Change Password clicked');
         console.log('Current Password:', this.currentPassword);
         console.log('New Password:', this.newPassword);
@@ -44,9 +47,9 @@
   </script>
   
   <style scoped>
-  /* 导入 Google Fonts */
+  /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-  /* 新增的样式 */
+  /* Newly added styles. */
   .change-password {
     text-align: center;
     width : 400px;
@@ -81,7 +84,7 @@
     background-color: #f2f2f2;
   }
   
-  /* 原有的样式 */
+  /* original style */
   .course-detail {
     margin-top: 20px;
   }
@@ -109,9 +112,9 @@
   }
   
   .content-item {
-    width: 800px; /* 设置固定宽度 */
-    overflow-x: auto; /* 添加水平滚动条 */
-    overflow-y: auto; /* 添加垂直滚动条 */
+    width: 800px; /* "set a fixed width */
+    overflow-x: auto; /* add a horizontal scrollbar */
+    overflow-y: auto; /* add a vertical scrollbar */
   }
   
   .course-details h3 {
@@ -156,15 +159,15 @@
   }
   
   .meeting-schedule th:first-child {
-    width: 50px; /* 时间列宽度 */
+    width: 50px; /* time column width */
   }
   
   .meeting-schedule th:last-child {
-    width: calc(100% - 50px); /* 课程列宽度 */
+    width: calc(100% - 50px); /* time column width */
   }
   
   .meeting-schedule td:last-child {
-    text-align: left; /* 课程列文本左对齐 */
+    text-align: left; /* course column text left-aligned */
   }
   
   select {

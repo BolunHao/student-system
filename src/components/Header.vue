@@ -24,24 +24,24 @@ body {
   background-color: #f2f2f2;
   padding: 20px;
   display: flex;
-  justify-content: center; /* 水平居中对齐 */
-  align-items: center; /* 垂直居中对齐 */
-  position: relative; /* 使得 logo 可以绝对定位 */
-  flex-direction: column; /* 设置为竖直排列 */
+  justify-content: center; /* Center align horizontally */
+  align-items: center; /* Center vertically */
+  position: relative; /* The logo can be absolutely positioned */
+  flex-direction: column; /* Set to vertical */
 
 }
 
 .logo {
-  position: absolute; /* 绝对定位 */
+  position: absolute; /* Absolute positioning */
   right: 0; 
 }
 
 .logo-image {
-  width: 100px; /* 设置 logo 图片宽度 */
+  width: 100px; /* Set the logo image width */
 }
 
 .avatar-link {
-  position: relative; /* 相对定位 */
+  position: relative; /* Relative positioning */
 }
 
 .avatar {
@@ -54,6 +54,6 @@ body {
   font-size: 18px;
   color: #333;
   text-decoration: none;
-  margin-top: 10px; /* 姓名与头像间距 */
+  margin-top: 10px; /* Distance between name and profile picture */
 }
 </style>

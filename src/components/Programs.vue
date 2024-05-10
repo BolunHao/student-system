@@ -2,7 +2,7 @@
   <div class="programs-page">
     <h2>Programs</h2>
  
-    <!-- 介绍内容 -->
+    <!-- Introduction content -->
     <div class="introduction">
       <h2>Bring academic theory to life</h2>
       <p>
@@ -41,9 +41,9 @@ export default {
 }
 
 .introduction {
-  max-width: 1000px; /* 限制介绍内容的最大宽度 */
-  text-align: left; /* 左对齐文本 */
-  margin-top: 20px; /* 调整顶部间距 */
+  max-width: 1000px; /* Limit the maximum width of the introduction content */
+  text-align: left; /* Left-justified text */
+  margin-top: 20px; /* Adjust top spacing */
   margin-left : 15%;
 }
 </style>

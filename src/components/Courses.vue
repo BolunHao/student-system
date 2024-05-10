@@ -2,9 +2,9 @@
     <div class="courses">
       <h2>Courses</h2>
   
-      <!-- 展示课程列表 -->
+      <!-- Show course list -->
     <div class="course" v-for="course in courses" :key="course.code">
-      <router-link :to="'/course/' + course.code"> <!-- 将课程代码作为参数传递 -->
+      <router-link :to="'/course/' + course.code"> <!-- Pass the course code as a parameter -->
         <h3>{{ course.name }}</h3>
         <p>{{ course.description }}</p>
       </router-link>

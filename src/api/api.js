@@ -1,19 +1,19 @@
 // api.js
 
-// 模拟后端 API
+// Simulated backend API
 export const fakeAPI = {
     getCourses: () => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          // 假设从后端获取的课程数据
+          // Simulated data for courses fetched from the backend
           const courses = [
             { code: 'CSC2011', name: 'Engineering Mathematics Systems Modelling', description: 'This course covers mathematical modeling techniques in engineering.' },
             { code: 'CSC2012', name: 'Software Engineering', description: 'This course covers software development principles and practices.' },
             { code: 'CSC2013', name: 'Data Structures and Algorithms', description: 'This course covers data structures and algorithms.' },
-            // 其他课程...
+            // More courses...
           ];
           resolve(courses);
-        }, 500); // 模拟0.5秒延迟
+        }, 500); //  Simulate a delay of 0.5 seconds
       });
     },
 
@@ -31,7 +31,7 @@ export const fakeAPI = {
       {
         return new Promise((resolve) => {
           setTimeout(() => {
-            // 假设从后端获取的课程成绩数据
+            // Simulated data for course grades fetched from the backend
             const courseScore = {
               CSC2011: {
                 'Math': 90,
@@ -56,7 +56,7 @@ export const fakeAPI = {
               },
             };
             resolve(courseScore[code]);
-          }, 500); // 模拟0.5秒延迟
+          }, 500); // Simulate a delay of 0.5 seconds
         });
 
       }
@@ -64,7 +64,7 @@ export const fakeAPI = {
     getAssignments: (code) => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          // 假设从后端获取的assignments
+          // Simulated data for assignments fetched from the backend
           const assignments = {
             CSC2011: {
               courseName: 'Engineering Mathematics Systems Modelling',
@@ -90,17 +90,17 @@ export const fakeAPI = {
               examType: 'Final Exam',
               examTime: 'May 22nd, 2024'
             },
-            // 其他课程的assignments...
+            // More courses' assignments...
           };
           resolve(assignments[code]);
-        }, 500); // 模拟0.5秒延迟
+        }, 500); // Simulate a delay of 0.5 seconds
       });
     },
 
     getCourseContent: (code) => {
       return new Promise((resolve) => {
         setTimeout(() => {
-          // 假设从后端获取的课程内容数据
+          // Simulated data for course content fetched from the backend
           const courseContent = {
             CSC2011: {
               syllabus: '- Functions, algebra and graphs of functions',
@@ -147,11 +147,11 @@ export const fakeAPI = {
               meetingAttendance: 'Course meeting attendance content goes here.',
               reflect: 'Course reflection content goes here.'
             },
-            // 其他课程的内容...
+            // More courses' content...
           };
   
           resolve(courseContent[code]);
-        }, 500); // 模拟0.5秒延迟
+        }, 500); //  Simulate a delay of 0.5 seconds
       });
     }
 };

@@ -1,4 +1,8 @@
 <template>
+   <!-- Academic Guidance Component -->
+  <!-- This component displays a table of tutoring applications within the Academic Guidance section. -->
+  <!-- The table includes columns for Subject, Tutor, and Application Status. Users can submit their application or view the status (Pending, Success, Failed) if already submitted. -->
+  <!-- Applications are iterated over using Vue's v-for directive, where each application's data is displayed in a row. A conditional button allows the submission of an application, while different statuses are shown based on the application's current state. -->
   <div class="academic-guidance">
     <h2>Academic Guidance</h2>
     <table>
@@ -39,20 +43,20 @@ export default {
   },
   methods: {
     submitApplication(index) {
-      // 模拟提交申请的异步过程
+      // Simulate the asynchronous process of submitting an application.
       setTimeout(() => {
-        // 模拟申请成功或失败
+        // Simulate whether the application succeeds or fails.
         const success = Math.random() < 0.5;
         this.applications[index].status = success ? 'success' : 'failed';
         this.applications[index].applied = true;
-      }, 1000); // 模拟1秒延迟
+      }, 1000); // Simulate a 1-second delay.
     }
   }
 };
 </script>
 
 <style scoped>
-/* 导入 Google Fonts */
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 .academic-guidance {
   max-width: 1000px;
@@ -81,7 +85,7 @@ th {
   text-align: center;
 }
 
-/* 新添加的样式 */
+/* Newly added styles. */
 /* sidebar stylings */
 .sidebar {
   background-color: rgb(0, 0, 0);
